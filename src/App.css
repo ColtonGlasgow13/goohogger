@@ -40,8 +40,8 @@ footer {
 #overlay-image {
   position: absolute;
   z-index: 2;
-  left: 17em;
-  width: 90px;
+  left: 50%;
+  max-width: 20%;
   height: auto;
 }
 

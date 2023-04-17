@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MainImage from './GoohoggerMain.js';
 import './App.css';
 import './wordart.css'
+import GoohoggerMain from './GoohoggerMain.js';
 
 class App extends Component {
 
@@ -12,8 +13,8 @@ render() {
       <h1 class="wordart rainbow"><span class="text">Goohogger.com</span></h1>
     </header>
     <main>
-      <MainImage></MainImage>
-      <MainImage></MainImage>
+      <GoohoggerMain></GoohoggerMain>
+      <GoohoggerMain></GoohoggerMain>
     </main>
     <footer>
       <p>Footer content</p>
