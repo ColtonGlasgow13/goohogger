@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth'; // If you're using Firebase Authentication
 
 const firebaseConfig = {
-  // Your Firebase configuration object goes here
+  authDomain: "goohogger.com"
 };
 
 firebase.initializeApp(firebaseConfig);

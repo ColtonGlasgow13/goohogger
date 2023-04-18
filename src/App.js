@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import MainImage from './GoohoggerMain.js';
 import './App.css';
 import './wordart.css'
 import GoohoggerMain from './GoohoggerMain.js';
+import Music from './Music.js';
 
 class App extends Component {
 
@@ -18,6 +18,7 @@ render() {
     </main>
     <footer>
       <p>Footer content</p>
+      <Music></Music>
     </footer>
   </div>
   );
