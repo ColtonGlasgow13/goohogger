@@ -2,11 +2,24 @@ import React, { Component } from 'react';
 import './App.css';
 import './wordart.css'
 import GoohoggerMain from './GoohoggerMain.js';
+import InterfacePanel from './InterfacePanel';
 import Music from './Music.js';
 
-class App extends Component {
+function App() {
+  const buttons = [
+    'Button 1',
+    'Button 2',
+    'Button 3',
+    'Button 4',
+    'Button 5',
+    'Button 6',
+    'Button 7',
+    'Button 8',
+    'Button 9',
+    'Button 10',
+    'Button 11'
+  ];
 
-render() {
   return (
     <div id="app">
     <header>
@@ -14,6 +27,7 @@ render() {
     </header>
     <main>
       <GoohoggerMain></GoohoggerMain>
+      <InterfacePanel title="Interface Panel" buttons={buttons} />
       <GoohoggerMain></GoohoggerMain>
     </main>
     <footer>
@@ -22,7 +36,6 @@ render() {
     </footer>
   </div>
   );
-}
 
 }
 

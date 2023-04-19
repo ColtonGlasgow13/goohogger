@@ -1,10 +1,8 @@
 import React from 'react';
 import './UserButton.css';
 
-class UserButton extends React.Component {
-  render() {
-    return <button className="user-button">{this.props.name}</button>;
-  }
-}
+const UserButton = ({ label }) => {
+  return <button className="custom-button">{label}</button>;
+};
 
 export default UserButton;
