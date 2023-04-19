@@ -1,0 +1,12 @@
+/* InterfacePanelForm.css */
+.interface-panel-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .interface-panel-form input {
+    margin-bottom: 10px;
+  }
+  

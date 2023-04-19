@@ -12,14 +12,6 @@
     height: auto;
   }
   
-  .button-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    width: 100%; /* Full width of the parent container */
-  }
-
-  
 .widget-container {
   display: flex;
   justify-content: center;

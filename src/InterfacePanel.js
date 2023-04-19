@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './InterfacePanel.css';
 import TextInputWidget from './TextInputWidget';
 import NumberWidget from './NumberWidget';
+import './SubmitButton.css';
+import './InterfacePanelForm.css'
 
 const InterfacePanel = ({ title, buttons }) => {
     const [userName, setUserName] = useState('');
@@ -40,15 +42,16 @@ const InterfacePanel = ({ title, buttons }) => {
         {!selectedUser && (<h2>{title}</h2>)}
         {loginMessage && !selectedUser && (<h3>{loginMessage}</h3>)}
         {!selectedUser && (
-          <form onSubmit={handleNameSubmit}>
-            <label htmlFor="userName">Choose your name:</label>
+          <form onSubmit={handleNameSubmit} className='interface-panel-form'>
             <input
               type="text"
+              className="text-input"
+              placeholder="Username"
               id="userName"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
             />
-            <button type="submit">Submit</button>
+            <button type="submit" className='submit-button'>Submit</button>
           </form>
         )}
         <div className="widget-container">{renderWidget()}</div>
