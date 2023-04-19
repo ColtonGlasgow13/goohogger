@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import './wordart.css'
 import GoohoggerMain from './GoohoggerMain.js';
@@ -27,7 +27,7 @@ function App() {
     </header>
     <main>
       <GoohoggerMain></GoohoggerMain>
-      <InterfacePanel title="Interface Panel" buttons={buttons} />
+      <InterfacePanel title="Who are you?" buttons={buttons} />
       <GoohoggerMain></GoohoggerMain>
     </main>
     <footer>
