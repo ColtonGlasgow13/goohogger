@@ -1,22 +1,17 @@
-import React, { useState } from 'react';
-import './SubmitButton.css';     
+// TextInputWidget.js
+import React from 'react';
+import './TextInputWidget.css';
 
 const TextInputWidget = () => {
-  const [inputText, setInputText] = useState('');
-
-  const handleSubmit = () => {
-    // Handle submission logic here
-  };
-
   return (
-    <div>
-      <p>Enter some text:</p>
+    <div className="text-input-widget">
+      <h3>What is the name of the monster?</h3>
       <input
+        className="text-input"
         type="text"
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
+        placeholder="Enter text here"
       />
-      <button className="submit-button" onClick={handleSubmit}>Submit</button>
+      <button className="submit-button">Submit</button>
     </div>
   );
 };

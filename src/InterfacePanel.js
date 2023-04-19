@@ -51,7 +51,7 @@ const InterfacePanel = ({ title, buttons }) => {
             <button type="submit">Submit</button>
           </form>
         )}
-        {renderWidget()}
+        <div className="widget-container">{renderWidget()}</div>
       </div>
     );
   };

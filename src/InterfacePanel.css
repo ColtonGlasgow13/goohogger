@@ -18,4 +18,10 @@
     gap: 10px;
     width: 100%; /* Full width of the parent container */
   }
+
   
+.widget-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
