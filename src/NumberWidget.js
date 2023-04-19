@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './NumberWidget.css';
+import './SubmitButton.css';
 
 const NumberWidget = ({ targetNumber }) => {
   const [numberA, setNumberA] = useState(1);
