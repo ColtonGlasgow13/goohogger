@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import './wordart.css'
 import GoohoggerMain from './GoohoggerMain.js';
 import InterfacePanel from './InterfacePanel';
 import Music from './Music.js';
+import { auth } from './firebase';
 
 function App() {
-  const buttons = [
-    'Button 1',
-    'Button 2',
-    'Button 3',
-    'Button 4',
-    'Button 5',
-    'Button 6',
-    'Button 7',
-    'Button 8',
-    'Button 9',
-    'Button 10',
-    'Button 11'
-  ];
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in
+        setUser(user);
+      } else {
+        // User is signed out
+        setUser(null);
+      }
+    });
+  
+    // Clean up the listener when the component is unmounted
+    return () => unsubscribe();
+  }, []);
 
   return (
     <div id="app">
@@ -27,7 +31,7 @@ function App() {
     </header>
     <main>
       <GoohoggerMain></GoohoggerMain>
-      <InterfacePanel title="Who are you?" buttons={buttons} />
+      <InterfacePanel title="Who are you?" />
       <GoohoggerMain></GoohoggerMain>
     </main>
     <footer>

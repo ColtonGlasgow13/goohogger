@@ -1,5 +1,5 @@
 import firebase from 'firebase/compat/app';
-import 'firebase/auth';
+import 'firebase/compat/auth';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 
 const firebaseConfig = {
@@ -12,6 +12,8 @@ const app = firebase.initializeApp(firebaseConfig);
 
 const storage = getStorage(app);
 
+const auth = app.auth();
+
 const fetchUsers = async () => {
   const usersJSONRef = ref(storage, 'users.json');
   const usersJSON = await getDownloadURL(usersJSONRef);
@@ -21,4 +23,4 @@ const fetchUsers = async () => {
   return data.users;
 };
 
-export { storage, fetchUsers };
+export { storage, fetchUsers, auth };
