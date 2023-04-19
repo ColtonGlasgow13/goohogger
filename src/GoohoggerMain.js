@@ -20,7 +20,7 @@ class GoohoggerMain extends Component {
       <div className="image-container" id='goohogger-image-container'>
         <img src="goohogger-head-on.png" 
             alt="goohogger head ON" 
-            id="main-image"
+            id="goohogger-image"
             onClick={this.handleClick}></img>
         <img src="f-you.png"
             alt="f you"

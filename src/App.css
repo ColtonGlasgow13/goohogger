@@ -31,7 +31,7 @@ footer {
   text-align: center;
 }
 
-#main-image {
+#goohogger-image {
   max-width: 100%;
   height: auto;
   z-index: 1;
@@ -60,4 +60,20 @@ footer {
 .image-container {
   position: relative;
   display: inline-block;
+}
+
+h3 {
+  text-align: center;
+}
+
+  
+.text-input {
+  font-size: 1em;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
 }

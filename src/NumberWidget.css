@@ -1,0 +1,22 @@
+.number-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .number-inputs {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .number-input {
+    width: 80px;
+    height: 40px;
+    font-size: 2em;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
