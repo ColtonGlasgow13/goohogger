@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './InterfacePanel.css';
 import UserButton from './UserButton';
 import TextInputWidget from './TextInputWidget';
@@ -7,11 +7,19 @@ import NumberWidget from './NumberWidget';
 const InterfacePanel = ({ title, buttons }) => {
     const [userName, setUserName] = useState('');
     const [selectedUser, setSelectedUser] = useState(null);
+    const [loginMessage, setLoginMessage] = useState(null)
   
     const handleNameSubmit = (event) => {
       event.preventDefault();
       setSelectedUser(userName);
     };
+
+    useEffect(() => {
+        if (selectedUser && !['user1', 'user2'].includes(selectedUser.toLowerCase())) {
+          setSelectedUser(null);
+          setLoginMessage('Unknown user, please try again.');
+        }
+      }, [selectedUser]);
 
     const renderWidget = () => {
         if (!selectedUser) {
@@ -24,13 +32,14 @@ const InterfacePanel = ({ title, buttons }) => {
           case 'user2':
             return <NumberWidget targetNumber={10} />;
           default:
-            return <p>Unknown user, please try again.</p>;
+            return null;
         }
       };
   
     return (
       <div className="interface-panel">
-        <h2>{title}</h2>
+        {!selectedUser && (<h2>{title}</h2>)}
+        {loginMessage && !selectedUser && (<h3>{loginMessage}</h3>)}
         {!selectedUser && (
           <form onSubmit={handleNameSubmit}>
             <label htmlFor="userName">Choose your name:</label>
@@ -42,13 +51,6 @@ const InterfacePanel = ({ title, buttons }) => {
             />
             <button type="submit">Submit</button>
           </form>
-        )}
-        {selectedUser && (
-          <div className="button-container">
-            {buttons.map((buttonLabel, index) => (
-              <UserButton key={index} label={buttonLabel} />
-            ))}
-          </div>
         )}
         {renderWidget()}
       </div>
