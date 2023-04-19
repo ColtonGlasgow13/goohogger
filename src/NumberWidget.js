@@ -1,22 +1,52 @@
 import React, { useState } from 'react';
+import './NumberWidget.css';
 
 const NumberWidget = ({ targetNumber }) => {
-  const [number1, setNumber1] = useState(0);
-  const [number2, setNumber2] = useState(0);
+  const [numberA, setNumberA] = useState(1);
+  const [numberB, setNumberB] = useState(1);
+
+  const handleNumberAChange = (value) => {
+    const newNumberA = Math.max(1, parseInt(value, 10));
+    if (newNumberA + numberB > targetNumber) {
+      setNumberA(targetNumber - numberB);
+    } else {
+      setNumberA(newNumberA);
+    }
+  };
+
+  const handleNumberBChange = (value) => {
+    const newNumberB = Math.max(1, parseInt(value, 10));
+    if (numberA + newNumberB > targetNumber) {
+      setNumberB(targetNumber - numberA);
+    } else {
+      setNumberB(newNumberB);
+    }
+  };
+
+  const handleSubmit = () => {
+    // Handle submission logic here
+  };
 
   return (
-    <div>
-      <p>Select two numbers that add up to {targetNumber}:</p>
-      <input
-        type="number"
-        value={number1}
-        onChange={(e) => setNumber1(parseInt(e.target.value, 10))}
-      />
-      <input
-        type="number"
-        value={number2}
-        onChange={(e) => setNumber2(parseInt(e.target.value, 10))}
-      />
+    <div className="number-widget">
+      <p>Enter two numbers that add up to {targetNumber}:</p>
+      <div className="number-inputs">
+        <input
+          type="number"
+          className="number-input"
+          min="1"
+          value={numberA}
+          onChange={(e) => handleNumberAChange(e.target.value)}
+        />
+        <input
+          type="number"
+          className="number-input"
+          min="1"
+          value={numberB}
+          onChange={(e) => handleNumberBChange(e.target.value)}
+        />
+      </div>
+      <button className="submit-button" onClick={handleSubmit}>Submit</button>
     </div>
   );
 };

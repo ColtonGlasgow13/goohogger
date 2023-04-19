@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './InterfacePanel.css';
-import UserButton from './UserButton';
 import TextInputWidget from './TextInputWidget';
 import NumberWidget from './NumberWidget';
 

@@ -1,0 +1,33 @@
+.number-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .number-inputs {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .number-input {
+    width: 80px;
+    height: 40px;
+    font-size: 2em;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .submit-button {
+    margin-top: 10px;
+    font-size: 24px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
