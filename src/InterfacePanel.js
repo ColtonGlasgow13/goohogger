@@ -4,23 +4,32 @@ import TextInputWidget from './TextInputWidget';
 import NumberWidget from './NumberWidget';
 import './SubmitButton.css';
 import './InterfacePanelForm.css'
+import { fetchUsers } from './firebase';
 
 const InterfacePanel = ({ title, buttons }) => {
     const [userName, setUserName] = useState('');
     const [selectedUser, setSelectedUser] = useState(null);
-    const [loginMessage, setLoginMessage] = useState(null)
+    const [loginMessage, setLoginMessage] = useState(null);
+    const [users, setUsers] = useState([]);
+  
+    useEffect(() => {
+      const getUsers = async () => {
+        const fetchedUsers = await fetchUsers();
+        setUsers(fetchedUsers);
+      };
+  
+      getUsers();
+    }, []);
   
     const handleNameSubmit = (event) => {
       event.preventDefault();
-      setSelectedUser(userName);
+      const user = users.find(user => user.username === userName);
+      if (user) {
+        setSelectedUser(user);
+      } else {
+        setLoginMessage("Unknown user, please try again.");
+      }
     };
-
-    useEffect(() => {
-        if (selectedUser && !['user1', 'user2'].includes(selectedUser.toLowerCase())) {
-          setSelectedUser(null);
-          setLoginMessage('Unknown user, please try again.');
-        }
-      }, [selectedUser]);
 
     const renderWidget = () => {
         if (!selectedUser) {
