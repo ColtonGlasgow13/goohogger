@@ -3,9 +3,13 @@ import 'firebase/compat/auth';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 
 const firebaseConfig = {
-  authDomain: 'goohogger.com',
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET_URL,
-  apiKey: 'your-api-key',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: "goohogger.firebaseapp.com",
+  projectId: "goohogger",
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 const app = firebase.initializeApp(firebaseConfig);
