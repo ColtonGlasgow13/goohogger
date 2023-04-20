@@ -4,7 +4,7 @@ import { auth } from './firebase';
 import './SubmitButton.css'
 import './SignIn-UpForm.css'
 
-const SignInForm = ({ onSignIn }) => {
+const SignInForm = ({ title, onSignIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ const SignInForm = ({ onSignIn }) => {
 
   return (
     <div className="signin-form">
-      <h2>Sign In</h2>
+      <h2>{title}</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -40,8 +40,6 @@ const SignInForm = ({ onSignIn }) => {
         />
         <button type="submit" className="submit-button">Sign In</button>
       </form>
-
-      <button id="or-create-account">Or create an account</button>
     </div>
   );
 };

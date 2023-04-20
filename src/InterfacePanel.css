@@ -17,3 +17,16 @@
   justify-content: center;
   width: 100%;
 }
+
+#or-create-account {
+  margin-top: 1em;
+  margin-left: 8em;
+  border: none;
+  color: blue;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#or-create-account:hover {
+  color: #28a8f7;
+}

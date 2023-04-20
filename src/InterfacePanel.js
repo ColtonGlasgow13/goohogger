@@ -8,11 +8,18 @@ import SignInForm from './SignInForm';
 
 const InterfacePanel = ({ title }) => {
     const [currentUser, setCurrentUser] = useState(null);
+
+    const clickCreateAccount = () => {
+    
+    }
   
     return (
       <div className="interface-panel">
         {!currentUser ? (
-          <SignInForm onSignIn={setCurrentUser} />
+          <div>
+            <SignInForm title={title} onSignIn={setCurrentUser} />
+            <button id="or-create-account" onClick={clickCreateAccount}>Or create an account</button>
+          </div>
         ) : (
           <div className="widget-container">I am a widget!</div>
         )}

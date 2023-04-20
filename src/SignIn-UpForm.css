@@ -38,15 +38,3 @@
   .signin-form .submit-button:hover, .signup-form .submit-button:hover {
     background-color: #45a049;
   }
-  
-  #or-create-account {
-    margin-top: 1em;
-    border: none;
-    color: blue;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  #or-create-account:hover {
-    color: #28a8f7;
-  }
