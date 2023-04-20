@@ -1,4 +1,4 @@
-.signin-form {
+.signin-form, .signup-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,27 +7,26 @@
     padding: 20px;
     margin: 10px;
     width: 300px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  .signin-form h2 {
+  .signin-form h2, .signup-form h2 {
     font-size: 24px;
     margin-bottom: 15px;
   }
   
-  .signin-form .error {
+  .signin-form .error, .signup-form .error {
     color: red;
     font-size: 14px;
     margin-bottom: 10px;
   }
   
-  .signin-form form {
+  .signin-form form, .signup-form form {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  .signin-form input {
+  .signin-form input, .signup-form input {
     font-size: 18px;
     padding: 10px;
     margin: 5px;
@@ -36,7 +35,18 @@
     width: 100%;
   }
   
-  .signin-form .submit-button:hover {
+  .signin-form .submit-button:hover, .signup-form .submit-button:hover {
     background-color: #45a049;
   }
   
+  #or-create-account {
+    margin-top: 1em;
+    border: none;
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #or-create-account:hover {
+    color: #28a8f7;
+  }

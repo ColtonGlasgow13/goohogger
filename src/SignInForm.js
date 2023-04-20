@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 import './SubmitButton.css'
-import './SignInForm.css'
+import './SignIn-UpForm.css'
 
 const SignInForm = ({ onSignIn }) => {
   const [email, setEmail] = useState('');
@@ -40,6 +40,8 @@ const SignInForm = ({ onSignIn }) => {
         />
         <button type="submit" className="submit-button">Sign In</button>
       </form>
+
+      <button id="or-create-account">Or create an account</button>
     </div>
   );
 };

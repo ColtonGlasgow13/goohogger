@@ -12,10 +12,10 @@ const InterfacePanel = ({ title }) => {
     return (
       <div className="interface-panel">
         {!currentUser ? (
-  <SignInForm onSignIn={setCurrentUser} />
-) : (
-  <div className="widget-container">I am a widget!</div>
-)}
+          <SignInForm onSignIn={setCurrentUser} />
+        ) : (
+          <div className="widget-container">I am a widget!</div>
+        )}
       </div>
     );
   };
