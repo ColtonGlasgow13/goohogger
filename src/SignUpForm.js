@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 
-const SignUpForm = () => {
+const SignUpForm = ({ title }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -18,7 +18,7 @@ const SignUpForm = () => {
 
   return (
     <div className="signup-form">
-      <h2>Sign Up</h2>
+      <h2>{title}</h2>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleSignUp}>
         <input

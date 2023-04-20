@@ -20,7 +20,6 @@
 
 #or-create-account {
   margin-top: 1em;
-  margin-left: 8em;
   border: none;
   color: blue;
   font-weight: bold;
@@ -29,4 +28,10 @@
 
 #or-create-account:hover {
   color: #28a8f7;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
