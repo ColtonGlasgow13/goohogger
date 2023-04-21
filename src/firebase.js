@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
+import "firebase/firestore";
 
 const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET_URL,
@@ -18,13 +19,17 @@ const storage = getStorage(app);
 
 const auth = app.auth();
 
-const fetchUsers = async () => {
-  const usersJSONRef = ref(storage, 'users.json');
-  const usersJSON = await getDownloadURL(usersJSONRef);
-  const response = await fetch(usersJSON);
-  const data = await response.json();
-  console.log('Fetched users:', data);
-  return data.users;
+const getCurrentUserToken = async () => {
+  const user = firebase.auth().currentUser;
+  
+  if (user) {
+    const uid = user.uid;
+    const idToken = await user.getIdToken();
+    return { uid, idToken };
+  } else {
+    console.error('No user is currently signed in');
+    return null;
+  }
 };
 
-export { storage, fetchUsers, auth };
+export { storage, auth, getCurrentUserToken };
