@@ -5,6 +5,6 @@ const { default: App } = require('../src/App.js');
 test('renders two main images', () => {
   render(<App />);
 
-  const mainImages = screen.getAllByRole('goohogger-image');
+  const mainImages = screen.getAllByRole('image');
   expect(mainImages).toHaveLength(2);
 });
