@@ -20,7 +20,7 @@ const Music = () => {
   }, []);
 
   return (
-    <audio ref={audioRef} src="/Summer-of-Tomfoolery.mp3" preload="auto" controls/>
+    <audio ref={audioRef} src="/Summer-of-Tomfoolery.mp3" preload="auto" controls loop/>
   );
 };
 
