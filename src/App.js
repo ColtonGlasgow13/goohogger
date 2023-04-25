@@ -44,7 +44,7 @@ function App() {
   return (
     <div id="app">
     <header>
-      <h1 class="wordart rainbow" onClick={clickTitle}><span class="text">Goohogger.com</span></h1>
+      <h1 className="wordart rainbow" onClick={clickTitle}><span className="text">Goohogger.com</span></h1>
     </header>
     <main>
       <GoohoggerMain></GoohoggerMain>

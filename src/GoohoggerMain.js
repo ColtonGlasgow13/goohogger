@@ -19,7 +19,8 @@ class GoohoggerMain extends Component {
     return (
       <div className="image-container" id='goohogger-image-container'>
         <img src="goohogger-head-on.png" 
-            alt="goohogger head ON" 
+            alt="goohogger head ON"
+            role="goohogger-image" 
             id="goohogger-image"
             onClick={this.handleClick}></img>
         <img src="f-you.png"

@@ -1,7 +1,7 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import { getStorage, ref, getDownloadURL } from 'firebase/storage';
-import "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getStorage } from 'firebase/storage';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET_URL,
@@ -13,15 +13,15 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
-const app = firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 const storage = getStorage(app);
-
-const auth = app.auth();
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 const getCurrentUserToken = async () => {
-  const user = firebase.auth().currentUser;
-  
+  const user = auth.currentUser;
+
   if (user) {
     const uid = user.uid;
     const idToken = await user.getIdToken();
@@ -32,4 +32,4 @@ const getCurrentUserToken = async () => {
   }
 };
 
-export { storage, auth, getCurrentUserToken };
+export { storage, auth, db, getCurrentUserToken };
