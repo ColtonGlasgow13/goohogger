@@ -96,3 +96,8 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+
+
+# cors setup folder, contains sensitive url and unecessary generally
+/cors-setup
