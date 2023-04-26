@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 import './SubmitButton.css'
-import './SignIn-UpForm.css'
+import './AuthForm.css'
 
-const SignInForm = ({ title, onSignIn }) => {
+const AuthForm = ({ title, mode, onSignIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setError(null);
+
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      onSignIn(userCredential.user);
+      let userCredential;
+      if (mode === 'signIn') {
+        userCredential = await signInWithEmailAndPassword(auth, email, password);
+        onSignIn(userCredential.user);
+      } else if (mode === 'signUp') {
+        userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      } else {
+        throw new Error('Invalid mode');
+      }
     } catch (error) {
       setError(error.message);
     }
   };
 
   return (
-    <div className="signin-form">
+    <div className={`${mode}-form`}>
       <h2>{title}</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
@@ -38,10 +47,10 @@ const SignInForm = ({ title, onSignIn }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className="submit-button">Sign In</button>
+        <button type="submit" className="submit-button">{mode === 'signIn' ? 'Sign In' : 'Sign Up'}</button>
       </form>
     </div>
   );
 };
 
-export default SignInForm;
+export default AuthForm;

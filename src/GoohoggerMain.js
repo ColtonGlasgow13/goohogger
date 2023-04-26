@@ -1,34 +1,30 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class GoohoggerMain extends Component {
-    constructor(props) {
-        super(props)
+function GoohoggerMain() {
+  const [goohoggerClicked, setGoohoggerClicked] = useState(false);
 
-        this.state = {
-            goohoggerClicked: false
-        };
+  const handleClick = () => {
+    setGoohoggerClicked(!goohoggerClicked);
+  };
 
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-  handleClick() {
-    this.setState({ goohoggerClicked: !this.state.goohoggerClicked})
-  }
-
-  render() {
-    return (
-      <div className="image-container" id='goohogger-image-container'>
-        <img src="goohogger-head-on.png" 
-            alt="goohogger head ON" 
-            id="goohogger-image"
-            onClick={this.handleClick}></img>
-        <img src="f-you.png"
-            alt="f you"
-            id="overlay-image"
-            hidden={!this.state.goohoggerClicked}></img>
-      </div>
-    );
-  }
+  return (
+    <div className="image-container" id="goohogger-image-container">
+      <img
+        src="goohogger-head-on.png"
+        alt="goohogger head ON"
+        role="image"
+        id="goohogger-image"
+        onClick={handleClick}
+      />
+      <img
+        src="f-you.png"
+        alt="f you"
+        role="overlayImage"
+        id="overlay-image"
+        hidden={!goohoggerClicked}
+      />
+    </div>
+  );
 }
 
 export default GoohoggerMain;
