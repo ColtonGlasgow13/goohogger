@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import './wordart.css'
-import GoohoggerMain from './GoohoggerMain.js';
-import InterfacePanel from './InterfacePanel';
-import Music from './Music.js';
-import { auth } from './firebase';
-import { checkUserExists } from './API.js';
-import { getCurrentUserToken } from './firebase';
+import GoohoggerMain from './components/GoohoggerMain/GoohoggerMain';
+import InterfacePanel from './components/InterfacePanel/InterfacePanel';
+import Music from './components/common/Music.js';
+import { auth } from './components/common/firebase';
+import { checkUserExists } from './components/API/API.js';
+import { getCurrentUserToken } from './components/common/firebase';
 
 function App() {
   const [user, setUser] = useState(null);

@@ -1,6 +1,6 @@
 const React = require('react');
 const { render, screen, cleanup } = require('@testing-library/react');
-const { default: AuthForm } = require('../src/AuthForm.js');
+const { default: AuthForm } = require('../src/components/AuthForm/AuthForm.js');
 import userEvent from '@testing-library/user-event';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -19,11 +19,11 @@ jest.mock('firebase/auth', () => {
 
 
 test('AuthForm should have the correct className', () => {
-const { container } = render(<AuthForm mode="test"/>);
-const authForm = container.querySelector('.test-form');
+  const { container } = render(<AuthForm mode="test"/>);
+  const authForm = container.querySelector('.test-form');
 
-expect(authForm).toBeInTheDocument();
-expect(authForm.className).toBe('test-form');
+  expect(authForm).toBeInTheDocument();
+  expect(authForm.className).toBe('test-form');
 });
 
 

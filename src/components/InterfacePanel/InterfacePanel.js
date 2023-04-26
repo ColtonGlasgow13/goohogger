@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './InterfacePanel.css';
-import TextInputWidget from './TextInputWidget';
-import NumberWidget from './NumberWidget';
+import TextInputWidget from '../TextInputWidget/TextInputWidget';
+import NumberWidget from '../NumberWidget/NumberWidget';
 import './SubmitButton.css';
 import './InterfacePanelForm.css'
-import AuthForm from './AuthForm';
+import AuthForm from '../AuthForm/AuthForm';
 
 const InterfacePanel = ({ title }) => {
     const [currentUser, setCurrentUser] = useState(null);

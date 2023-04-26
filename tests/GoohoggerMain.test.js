@@ -1,6 +1,6 @@
 const React = require('react');
 const { render, screen } = require('@testing-library/react');
-const { default: GoohoggerMain } = require('../src/GoohoggerMain.js');
+const { default: GoohoggerMain } = require('../src/components/GoohoggerMain/GoohoggerMain');
 import userEvent from '@testing-library/user-event';
 
 test('goohogger renders main image', () => {
