@@ -23,7 +23,7 @@ const InterfacePanel = ({ title }) => {
             ) : (
               <AuthForm title="Join us." mode="signUp"/>
             )}
-            <button id="toggle-auth" onClick={toggleAuthMode}>Or create an account</button>
+            <button id="toggle-auth" onClick={toggleAuthMode}>{showLogin ? "Or create an account" : "Or sign in"}</button>
           </div>
         ) : (
         <div className="widget-container">I am a widget!</div>
