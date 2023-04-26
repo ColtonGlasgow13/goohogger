@@ -1,6 +1,7 @@
 const React = require('react');
-const { render, screen, fireEvent } = require('@testing-library/react');
+const { render, screen } = require('@testing-library/react');
 const { default: GoohoggerMain } = require('../src/GoohoggerMain.js');
+import userEvent from '@testing-library/user-event';
 
 test('goohogger renders main image', () => {
   render(<GoohoggerMain />);
@@ -10,7 +11,7 @@ test('goohogger renders main image', () => {
 });
 
 
-test('goohogger says fuck you on click', () => {
+test('goohogger says fuck you on click', async() => {
     render(<GoohoggerMain />)
 
     const goohoggerImage = screen.getByRole('image');
@@ -19,12 +20,12 @@ test('goohogger says fuck you on click', () => {
     expect(overlayImage).toHaveAttribute('hidden');
     expect(overlayImage).not.toBeVisible();
     
-    fireEvent.click(goohoggerImage);
+    await userEvent.click(goohoggerImage);
     
     // Content should be visible after the first click
     expect(overlayImage).toBeVisible();
     
-    fireEvent.click(goohoggerImage);
+    await userEvent.click(goohoggerImage);
     
     // Content should be hidden again after the second click
     expect(overlayImage).not.toBeVisible();
