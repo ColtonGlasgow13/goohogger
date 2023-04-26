@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-#or-create-account {
+#toggle-auth {
   margin-top: 1em;
   border: none;
   color: blue;
@@ -26,7 +26,7 @@
   cursor: pointer;
 }
 
-#or-create-account:hover {
+#toggle-auth:hover {
   color: #28a8f7;
 }
 
