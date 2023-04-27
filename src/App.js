@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import './wordart.css'
+import './components/common/wordart.css'
 import GoohoggerMain from './components/GoohoggerMain/GoohoggerMain';
 import InterfacePanel from './components/InterfacePanel/InterfacePanel';
 import Music from './components/common/Music.js';

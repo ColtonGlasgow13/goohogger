@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './InterfacePanel.css';
 import TextInputWidget from '../TextInputWidget/TextInputWidget';
 import NumberWidget from '../NumberWidget/NumberWidget';
-import './SubmitButton.css';
+import '../common/SubmitButton.css';
 import './InterfacePanelForm.css'
 import AuthForm from '../AuthForm/AuthForm';
 
