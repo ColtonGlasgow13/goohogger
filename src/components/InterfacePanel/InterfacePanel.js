@@ -6,8 +6,7 @@ import '../common/SubmitButton.css';
 import './InterfacePanelForm.css'
 import AuthForm from '../AuthForm/AuthForm';
 
-const InterfacePanel = ({ title }) => {
-    const [currentUser, setCurrentUser] = useState(null);
+const InterfacePanel = ({ user, setUser }) => {
     const [showLogin, setShowLogin] = useState(true);
 
     const toggleAuthMode = () => {
@@ -16,10 +15,10 @@ const InterfacePanel = ({ title }) => {
   
     return (
       <div className="interface-panel">
-        {!currentUser ? (
+        {!user ? (
           <div className='form-container'>
             {showLogin ? (
-              <AuthForm title="Who are you?" mode="signIn" onSignIn={setCurrentUser} />
+              <AuthForm title="Who are you?" mode="signIn" onSignIn={setUser}/>
             ) : (
               <AuthForm title="Join us." mode="signUp"/>
             )}

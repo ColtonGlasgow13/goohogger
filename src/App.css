@@ -13,8 +13,9 @@ html {
 }
 
 header {
-  padding: 20px;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
 }
 
 main {
@@ -77,4 +78,25 @@ h3 {
   max-width: 300px;
   box-sizing: border-box;
   margin-bottom: 20px;
+}
+
+#logout-button {
+  grid-column: 3;
+  z-index: 3;
+  justify-self: end;
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  padding: 0.5em 1em;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: bold;
+  border-color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+}
+
+#main-title {
+  grid-column: 2;
 }
