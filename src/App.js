@@ -1,52 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import './components/common/wordart.css'
 import GoohoggerMain from './components/GoohoggerMain/GoohoggerMain';
 import InterfacePanel from './components/InterfacePanel/InterfacePanel';
 import Music from './components/common/Music.js';
 import { auth } from './components/common/firebase';
-import { checkUserExists } from './components/API/API.js';
+import { isUserAssignedToMonster } from './components/API/API.js';
 import { getCurrentUserToken } from './components/common/firebase';
 
 function App() {
   const [user, setUser] = useState(null);
 
-  const storeToken = async () => {
-    const { uid, userToken } = await getCurrentUserToken();
-    if (userToken) {
-      sessionStorage.setItem('userToken', JSON.stringify(userToken));
+  const storeToken = async (user) => {
+    if (user) {
+      const uid = user.uid;
+      const idToken = await user.getIdToken();
+      sessionStorage.setItem('idToken', JSON.stringify(idToken));
       sessionStorage.setItem('uid', JSON.stringify(uid));
+
+      console.log('Stored UID:', uid)
+    } else {
+      console.error('No user is currently signed in');
     }
   };
 
   const removeToken = async () => {
-    sessionStorage.removeItem('userToken');
+    sessionStorage.removeItem('idToken');
     sessionStorage.removeItem('uid');
   }
+
+
+  const userSignIn = useCallback(async (user) => {
+    setUser(user);
+    await storeToken(user);
+    console.log('token stored');
+
+    const idToken = JSON.parse(sessionStorage.getItem('idToken'));
+    const uid = JSON.parse(sessionStorage.getItem('uid'));
+    isUserAssignedToMonster(uid, idToken);
+  }, []);
+
+  const userSignOut = useCallback(() => {
+    setUser(null);
+    removeToken();
+    console.log('token unstored');
+  }, []);
   
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        // User is signed in
-        setUser(user);
-        storeToken();
+        userSignIn(user);
       } else {
-        // User is signed out
-        setUser(null);
-        removeToken();
+        userSignOut();
       }
     });
   
     // Clean up the listener when the component is unmounted
     return () => unsubscribe();
-  }, []);
+  }, [userSignIn, userSignOut]);
 
   const clickTitle = async() => {
     // const { uid, idToken } = await getCurrentUserToken();
     // console.log("User UID:", uid);
     // console.log("User ID Token:", idToken);
-    // checkUserExists(uid, idToken);
+    // isUserAssignedToMonster(uid, idToken);
 
     // auth.signOut().then(() => {
     //   // Sign-out successful.
@@ -54,7 +72,7 @@ function App() {
     // }).catch((error) => {
     //   // An error happened.
     //   console.error("Error signing out:", error);
-    console.log("fuck");
+    console.log("ouch");
   }
 
   return (

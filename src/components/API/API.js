@@ -36,3 +36,28 @@ export const checkUserExists = async (uid, idToken) => {
       return false;
     }
   };
+
+
+  export const isUserAssignedToMonster = async (uid, idToken) => {
+    try {
+      const response = await fetch(process.env.REACT_APP_NETLIFY_TEST_FUNCTIONS_URL + `isUserAssignedToMonster?uid=${uid}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${idToken}`,
+        },
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('User assigned:', data.userIsAssignedToMonster);
+        return data.userIsAssignedToMonster;
+      } else {
+        console.error('Failed to check user existence:', response.statusText);
+        return false;
+      }
+    } catch (error) {
+      console.error('Error checking user existence:', error);
+      return false;
+    }
+  };
