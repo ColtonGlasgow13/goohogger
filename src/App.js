@@ -5,7 +5,7 @@ import GoohoggerMain from './components/GoohoggerMain/GoohoggerMain';
 import InterfacePanel from './components/InterfacePanel/InterfacePanel';
 import Music from './components/common/Music.js';
 import { auth } from './components/common/firebase';
-import { isUserAssignedToMonster } from './components/API/API.js';
+import { assignUserToMonster, isUserAssignedToMonster } from './components/API/API.js';
 import { getCurrentUserToken } from './components/common/firebase';
 
 function App() {
@@ -37,7 +37,11 @@ function App() {
 
     const idToken = JSON.parse(sessionStorage.getItem('idToken'));
     const uid = JSON.parse(sessionStorage.getItem('uid'));
-    isUserAssignedToMonster(uid, idToken);
+    
+    // Assign the user to a monster if they haven't been already
+    if (!(await isUserAssignedToMonster(uid, idToken))) {
+      assignUserToMonster(uid, idToken);
+    }
   }, []);
 
   const userSignOut = useCallback(() => {
