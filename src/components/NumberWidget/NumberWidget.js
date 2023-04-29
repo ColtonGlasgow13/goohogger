@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import './NumberWidget.css';
 import '../common/SubmitButton.css';
 
-const NumberWidget = ({ targetNumber }) => {
+const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
   const [numberA, setNumberA] = useState(1);
   const [numberB, setNumberB] = useState(1);
 
   const handleNumberAChange = (value) => {
     const newNumberA = Math.max(1, parseInt(value, 10));
-    if (newNumberA + numberB > targetNumber) {
-      setNumberA(targetNumber - numberB);
+    if (newNumberA + numberB > sumOfStats) {
+      setNumberA(sumOfStats - numberB);
     } else {
       setNumberA(newNumberA);
     }
@@ -17,8 +17,8 @@ const NumberWidget = ({ targetNumber }) => {
 
   const handleNumberBChange = (value) => {
     const newNumberB = Math.max(1, parseInt(value, 10));
-    if (numberA + newNumberB > targetNumber) {
-      setNumberB(targetNumber - numberA);
+    if (numberA + newNumberB > sumOfStats) {
+      setNumberB(sumOfStats - numberA);
     } else {
       setNumberB(newNumberB);
     }
@@ -30,7 +30,7 @@ const NumberWidget = ({ targetNumber }) => {
 
   return (
     <div className="number-widget">
-      <p>Enter two numbers that add up to {targetNumber}:</p>
+      <p>Set the {stat1} and {stat2} of the monster! Their sum must equal {sumOfStats}.</p>
       <div className="number-inputs">
         <input
           type="number"

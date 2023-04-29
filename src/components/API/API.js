@@ -1,21 +1,6 @@
-export const addWidget = async (title) => {
-    const response = await fetch(process.env.REACT_APP_NETLIFY_FUNCTIONS_URL + '/addWidget', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ title }),
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to add widget");
-      }
-};
-
-
-export const checkUserExists = async (uid, idToken) => {
+export const isUserAssignedToMonster = async (uid, idToken) => {
     try {
-      const response = await fetch(process.env.REACT_APP_NETLIFY_TEST_FUNCTIONS_URL + `doesUserExist?uid=${uid}`, {
+      const response = await fetch(process.env.REACT_APP_NETLIFY_TEST_FUNCTIONS_URL + `getAssignedWidget?uid=${uid}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -25,33 +10,10 @@ export const checkUserExists = async (uid, idToken) => {
   
       if (response.ok) {
         const data = await response.json();
-        console.log('User exists:', data.userExists);
-        return data.userExists;
-      } else {
-        console.error('Failed to check user existence:', response.statusText);
-        return false;
-      }
-    } catch (error) {
-      console.error('Error checking user existence:', error);
-      return false;
-    }
-  };
+        console.log('User is assigned:', data);
+        
+        return !!data;
 
-
-  export const isUserAssignedToMonster = async (uid, idToken) => {
-    try {
-      const response = await fetch(process.env.REACT_APP_NETLIFY_TEST_FUNCTIONS_URL + `isUserAssignedToMonster?uid=${uid}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${idToken}`,
-        },
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        console.log('User assigned:', data.userIsAssignedToMonster);
-        return data.userIsAssignedToMonster;
       } else {
         console.error('Failed to check user existence:', response.statusText);
         return false;
@@ -74,9 +36,7 @@ export const assignUserToMonster = async (uid, idToken) => {
     });
 
     if (response.ok) {
-      const data = await response.json();
-      console.log('User assigned:');
-      return data.userIsAssignedToMonster;
+      return true;
     } else {
       console.error('Failed to check user existence:', response.statusText);
       return false;
@@ -84,5 +44,34 @@ export const assignUserToMonster = async (uid, idToken) => {
   } catch (error) {
     console.error('Error checking user existence:', error);
     return false;
+  }
+};
+
+
+export const getUserAssignedWidget = async (uid, idToken) => {
+  try {
+    const response = await fetch(process.env.REACT_APP_NETLIFY_TEST_FUNCTIONS_URL + `getAssignedWidget?uid=${uid}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${idToken}`,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('User assigned:', data);
+      
+      if (!data) {
+        console.error('User has no assigned widget:', response.statusText)
+      } else {
+        return { widgetName: data.widgetName, statsDetails: data.statsDetails };
+      }
+
+    } else {
+      console.error('Failed to get assigned widget:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Failed to get assigned widget:', error);
   }
 };

@@ -5,11 +5,11 @@ import GoohoggerMain from './components/GoohoggerMain/GoohoggerMain';
 import InterfacePanel from './components/InterfacePanel/InterfacePanel';
 import Music from './components/common/Music.js';
 import { auth } from './components/common/firebase';
-import { assignUserToMonster, isUserAssignedToMonster } from './components/API/API.js';
-import { getCurrentUserToken } from './components/common/firebase';
+import { assignUserToMonster, getUserAssignedWidget, isUserAssignedToMonster } from './components/API/API.js';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [widgetName, setWidgetName] = useState(null);
 
   const storeToken = async (user) => {
     if (user) {
@@ -40,8 +40,11 @@ function App() {
     
     // Assign the user to a monster if they haven't been already
     if (!(await isUserAssignedToMonster(uid, idToken))) {
-      assignUserToMonster(uid, idToken);
+      await assignUserToMonster(uid, idToken);
     }
+
+    // Record the user's assigned widget in state
+    setWidgetName(await getUserAssignedWidget(uid, idToken));
   }, []);
 
   const userSignOut = useCallback(() => {
@@ -101,7 +104,7 @@ function App() {
     </header>
     <main>
       <GoohoggerMain></GoohoggerMain>
-      <InterfacePanel title="Who are you?" user={user} setUser={setUser} />
+      <InterfacePanel title="Who are you?" user={user} setUser={setUser} widgetName={widgetName} />
       <GoohoggerMain></GoohoggerMain>
     </main>
     <footer>
