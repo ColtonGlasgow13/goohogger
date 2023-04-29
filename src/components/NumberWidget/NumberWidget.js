@@ -30,22 +30,30 @@ const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
 
   return (
     <div className="number-widget">
-      <p>Set the {stat1} and {stat2} of the monster! Their sum must equal {sumOfStats}.</p>
+      <p>Set the <strong>{stat1}</strong> and <strong>{stat2}</strong> of the monster! Their sum must equal {sumOfStats}.</p>
       <div className="number-inputs">
-        <input
-          type="number"
-          className="number-input"
-          min="1"
-          value={numberA}
-          onChange={(e) => handleNumberAChange(e.target.value)}
-        />
-        <input
-          type="number"
-          className="number-input"
-          min="1"
-          value={numberB}
-          onChange={(e) => handleNumberBChange(e.target.value)}
-        />
+        <div className="input-container">
+          <input
+            id="stat1"
+            type="number"
+            className="number-input"
+            min="1"
+            value={numberA}
+            onChange={(e) => handleNumberAChange(e.target.value)}
+          />
+          <label htmlFor="stat1" className="number-label">{stat1}</label>
+        </div>
+        <div className="input-container">
+          <input
+            id="stat2"
+            type="number"
+            className="number-input"
+            min="1"
+            value={numberB}
+            onChange={(e) => handleNumberBChange(e.target.value)}
+          />
+          <label htmlFor="stat2" className="number-label">{stat2}</label>
+        </div>
       </div>
       <button className="submit-button" onClick={handleSubmit}>Submit</button>
     </div>

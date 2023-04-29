@@ -6,7 +6,7 @@ import '../common/SubmitButton.css';
 import './InterfacePanelForm.css'
 import AuthForm from '../AuthForm/AuthForm';
 
-const InterfacePanel = ({ user, setUser, widgetName }) => {
+const InterfacePanel = ({ user, setUser, widgetName, stat1, stat2 }) => {
     const [showLogin, setShowLogin] = useState(true);
 
     const toggleAuthMode = () => {
@@ -18,6 +18,10 @@ const InterfacePanel = ({ user, setUser, widgetName }) => {
       switch(widgetName) {
         case 'name':
           return <TextInputWidget/>;
+        case 'stats-1':
+        case 'stats-2':
+        case 'stats-3':
+          return <NumberWidget stat1={stat1} stat2={stat2} sumOfStats={30}/>
         default:
           return <div>Uh oh! there's been a little fuckywucky with your server-side data (●´ω｀●) Maybe log out and back in?</div>
       }
