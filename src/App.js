@@ -10,6 +10,7 @@ import { assignUserToMonster, getUserAssignedWidget, isUserAssignedToMonster } f
 function App() {
   const [user, setUser] = useState(null);
   const [widgetName, setWidgetName] = useState(null);
+  const [statsDetails, setStatsDetails] = useState(null);
 
   const storeToken = async (user) => {
     if (user) {
@@ -44,7 +45,9 @@ function App() {
     }
 
     // Record the user's assigned widget in state
-    setWidgetName(await getUserAssignedWidget(uid, idToken));
+    const { widgetName, statsDetails } = await getUserAssignedWidget(uid, idToken);
+    setWidgetName(widgetName);
+    setStatsDetails(statsDetails)
   }, []);
 
   const userSignOut = useCallback(() => {
@@ -104,7 +107,13 @@ function App() {
     </header>
     <main>
       <GoohoggerMain></GoohoggerMain>
-      <InterfacePanel title="Who are you?" user={user} setUser={setUser} widgetName={widgetName} />
+      <InterfacePanel 
+        title="Who are you?" 
+        user={user} 
+        setUser={setUser} 
+        widgetName={widgetName}
+        stat1={statsDetails[0]}
+        stat2={statsDetails[1]} />
       <GoohoggerMain></GoohoggerMain>
     </main>
     <footer>
