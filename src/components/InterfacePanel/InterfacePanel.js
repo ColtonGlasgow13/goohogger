@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './InterfacePanel.css';
 import TextInputWidget from '../TextInputWidget/TextInputWidget';
 import NumberWidget from '../NumberWidget/NumberWidget';
 import '../common/SubmitButton.css';
+import '../common/SpinningImage.css';
 import './InterfacePanelForm.css'
 import AuthForm from '../AuthForm/AuthForm';
 
@@ -15,17 +16,17 @@ const InterfacePanel = ({ user, setUser, widgetName, stat1, stat2 }) => {
 
 
     const renderWidget = () => {
-      switch(widgetName) {
-        case 'name':
-          return <TextInputWidget/>;
-        case 'stats-1':
-        case 'stats-2':
-        case 'stats-3':
-          return <NumberWidget stat1={stat1} stat2={stat2} sumOfStats={30}/>
-        default:
-          return <div>Uh oh! there's been a little fuckywucky with your server-side data (●´ω｀●) Maybe log out and back in?</div>
+        switch(widgetName) {
+          case 'name':
+            return <TextInputWidget/>;
+          case 'stats-1':
+          case 'stats-2':
+          case 'stats-3':
+            return <NumberWidget stat1={stat1} stat2={stat2} sumOfStats={30}/>
+          default:
+            return <img src="goohogger-head-on.png" alt="Loading..." className="spinning-image" />
+        }
       }
-    }
 
   
     return (

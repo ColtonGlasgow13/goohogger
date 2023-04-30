@@ -48,8 +48,10 @@ function App() {
     // Record the user's assigned widget in state
     const { widgetName, statsDetails } = await getUserAssignedWidget(uid, idToken);
     setWidgetName(widgetName);
-    setStat1(statsDetails[0]);
-    setStat2(statsDetails[1]);
+    if (statsDetails) {
+      setStat1(statsDetails[0]);
+      setStat2(statsDetails[1]);
+    }
   }, []);
 
   const userSignOut = useCallback(() => {
