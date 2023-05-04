@@ -1,6 +1,6 @@
 export const isUserAssignedToMonster = async (uid, idToken) => {
     try {
-      const response = await fetch(process.env.REACT_APP_NETLIFY_TEST_FUNCTIONS_URL + `getAssignedWidget?uid=${uid}`, {
+      const response = await fetch(process.env.REACT_APP_NETLIFY_FUNCTIONS_URL + `getAssignedWidget?uid=${uid}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export const isUserAssignedToMonster = async (uid, idToken) => {
 
 export const assignUserToMonster = async (uid, idToken) => {
   try {
-    const response = await fetch(process.env.REACT_APP_NETLIFY_TEST_FUNCTIONS_URL + `assignUserToMonster?uid=${uid}`, {
+    const response = await fetch(process.env.REACT_APP_NETLIFY_FUNCTIONS_URL + `assignUserToMonster?uid=${uid}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export const assignUserToMonster = async (uid, idToken) => {
 
 export const getUserAssignedWidget = async (uid, idToken) => {
   try {
-    const response = await fetch(process.env.REACT_APP_NETLIFY_TEST_FUNCTIONS_URL + `getAssignedWidget?uid=${uid}`, {
+    const response = await fetch(process.env.REACT_APP_NETLIFY_FUNCTIONS_URL + `getAssignedWidget?uid=${uid}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
