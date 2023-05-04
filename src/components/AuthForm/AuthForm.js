@@ -17,12 +17,12 @@ const AuthForm = ({ title, mode, onSignIn }) => {
       let userCredential;
       if (mode === 'signIn') {
         userCredential = await signInWithEmailAndPassword(auth, email, password);
-        onSignIn(userCredential.user);
       } else if (mode === 'signUp') {
         userCredential = await createUserWithEmailAndPassword(auth, email, password);
       } else {
         throw new Error('Invalid mode');
       }
+      onSignIn(userCredential.user);
     } catch (error) {
       setError(error.message);
     }

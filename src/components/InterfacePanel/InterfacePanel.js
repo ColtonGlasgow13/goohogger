@@ -42,7 +42,7 @@ const InterfacePanel = ({ user, setUser, widgetName, stat1, stat2 }) => {
             {showLogin ? (
               <AuthForm title="Who are you?" mode="signIn" onSignIn={handleSignIn}/>
             ) : (
-              <AuthForm title="Join us." mode="signUp"/>
+              <AuthForm title="Join us." mode="signUp" onSignIn={handleSignIn}/>
             )}
             <button id="toggle-auth" onClick={toggleAuthMode}>{showLogin ? "Or create an account" : "Or sign in"}</button>
           </div>
