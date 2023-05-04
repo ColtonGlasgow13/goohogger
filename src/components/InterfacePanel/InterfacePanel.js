@@ -15,6 +15,12 @@ const InterfacePanel = ({ user, setUser, widgetName, stat1, stat2 }) => {
     };
 
 
+    const handleSignIn = (user) => {
+      setShowLogin(true);
+      setUser(user);
+    }
+
+
     const renderWidget = () => {
         switch(widgetName) {
           case 'name':
@@ -34,7 +40,7 @@ const InterfacePanel = ({ user, setUser, widgetName, stat1, stat2 }) => {
         {!user ? (
           <div className='form-container'>
             {showLogin ? (
-              <AuthForm title="Who are you?" mode="signIn" onSignIn={setUser}/>
+              <AuthForm title="Who are you?" mode="signIn" onSignIn={handleSignIn}/>
             ) : (
               <AuthForm title="Join us." mode="signUp"/>
             )}
