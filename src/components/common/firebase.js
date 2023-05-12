@@ -6,12 +6,14 @@ import { getFirestore } from 'firebase/firestore';
 const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET_URL,
   apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: "goohogger.firebaseapp.com",
-  projectId: "goohogger",
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
   measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
+
+console.error(firebaseConfig.authDomain);
 
 const app = initializeApp(firebaseConfig);
 

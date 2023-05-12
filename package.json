@@ -12,6 +12,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "start:prod": "env-cmd -f .env.production react-scripts start",
+    "start:test": "env-cmd -f .env.development react-scripts start",
+    "build:prod": "env-cmd -f .env.production react-scripts build",
+    "build:test": "env-cmd -f .env.development react-scripts build",
     "test": "jest --watchAll=false",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open"
@@ -40,8 +44,10 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "babel-jest": "^29.5.0",
+    "cross-env": "^7.0.3",
     "cypress": "^12.11.0",
     "dotenv": "^16.0.3",
+    "env-cmd": "^10.1.0",
     "jest": "^27.5.1",
     "jest-environment-jsdom-sixteen": "^2.0.0"
   }

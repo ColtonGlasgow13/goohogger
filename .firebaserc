@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "goohogger"
-  }
+    "default": "goohogger",
+    "test": "goohogger-test"
+  },
+  "targets": {},
+  "etags": {}
 }
