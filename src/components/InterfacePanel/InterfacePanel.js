@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './InterfacePanel.css';
 import TextInputWidget from '../TextInputWidget/TextInputWidget';
 import NumberWidget from '../NumberWidget/NumberWidget';
+import TypeMovementWidget from '../TypeMovementWidget/TypeMovementWidget'
 import '../common/SubmitButton.css';
 import '../common/SpinningImage.css';
 import './InterfacePanelForm.css'
@@ -29,6 +30,8 @@ const InterfacePanel = ({ user, setUser, widgetName, stat1, stat2 }) => {
           case 'stats-2':
           case 'stats-3':
             return <NumberWidget stat1={stat1} stat2={stat2} sumOfStats={30}/>
+          case 'type-movement':
+            return <TypeMovementWidget/>;
           default:
             return <img src="goohogger-head-on.png" alt="Loading..." className="spinning-image" />
         }
