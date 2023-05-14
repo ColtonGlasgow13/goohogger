@@ -10,7 +10,6 @@ export const isUserAssignedToMonster = async (uid, idToken) => {
   
       if (response.ok) {
         const data = await response.json();
-        console.log('User is assigned:', data);
         
         return !!data;
 

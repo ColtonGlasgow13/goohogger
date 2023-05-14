@@ -57,7 +57,6 @@ function App() {
   const userSignOut = useCallback(() => {
     setUser(null);
     removeToken();
-    console.log('token unstored');
   }, []);
   
 

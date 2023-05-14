@@ -13,8 +13,6 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
-console.error(firebaseConfig.authDomain);
-
 const app = initializeApp(firebaseConfig);
 
 const storage = getStorage(app);
