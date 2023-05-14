@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './NumberWidget.css';
 import '../common/SubmitButton.css';
+import { putMonsterData } from '../API/API'
 
 const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
   const [numberA, setNumberA] = useState(1);
@@ -25,7 +26,13 @@ const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
   };
 
   const handleSubmit = () => {
-    // Handle submission logic here
+    const data = {
+      [stat1]: numberA,
+      [stat2]: numberB
+    };
+
+    const idToken = JSON.parse(sessionStorage.getItem('idToken'));
+    putMonsterData(data, idToken);
   };
 
   return (

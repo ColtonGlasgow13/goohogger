@@ -77,7 +77,7 @@ export const getUserAssignedWidget = async (uid, idToken) => {
 
 
 // Data should be in form {Strength: 5, Dexterity: 19}
-export const putMonsterData = async (data) => {
+export const putMonsterData = async (data, idToken) => {
   try {
     const response = await fetch(process.env.REACT_APP_NETLIFY_FUNCTIONS_URL + `addMonsterData`, {
       method: 'PUT',
