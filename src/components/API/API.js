@@ -74,3 +74,29 @@ export const getUserAssignedWidget = async (uid, idToken) => {
     console.error('Failed to get assigned widget:', error);
   }
 };
+
+
+// Data should be in form {Strength: 5, Dexterity: 19}
+export const putMonsterData = async (data) => {
+  try {
+    const response = await fetch(process.env.REACT_APP_NETLIFY_FUNCTIONS_URL + `addMonsterData`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${idToken}`,
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      return true;
+    } else {
+      console.error('Failed to put monster data:', response.statusText);
+      return false;
+    }
+
+  } catch (error) {
+    console.error('Error putting monster data:', error);
+    return false;
+  }
+};
