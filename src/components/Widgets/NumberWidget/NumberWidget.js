@@ -1,34 +1,35 @@
 import React from 'react';
 import './NumberWidget.css';
 import '../../common/SubmitButton.css';
-import useFormInput from '../useForm';
+import useForm from '../useForm';
 
 const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
-  const initialStats = {
-    [stat1]: 1,
-    [stat2]: 1,
-  };
+  const formatData = ({ numberA, numberB }) => ({
+    [stat1]: numberA,
+    [stat2]: numberB,
+  });
 
-  const handleInputChange = (event, currentStats, setStats) => {
-    const { name, value: newValue } = event.target;
-    const otherStat = name === stat1 ? stat2 : stat1;
-    const newStatValue = Math.max(1, parseInt(newValue, 10));
-    if (newStatValue + currentStats[otherStat] > sumOfStats) {
-      setStats({ ...currentStats, [name]: sumOfStats - currentStats[otherStat] });
+  const { values, onChange, onSubmit } = useForm({ numberA: 1, numberB: 1 }, formatData);
+
+  const handleNumberAChange = (event, state, setState) => {
+    const newNumberA = Math.max(1, parseInt(event.target.value, 10));
+    if (newNumberA + state.numberB > sumOfStats) {
+      setState({ ...state, numberA: sumOfStats - state.numberB });
     } else {
-      setStats({ ...currentStats, [name]: newStatValue });
+      setState({ ...state, numberA: newNumberA });
     }
   };
-  
-  const formatData = (stats) => stats;
 
-  const { value: stats, onChange: handleStatsChange, onSubmit: handleSubmit } = useFormInput(
-    initialStats,
-    handleInputChange,
-    formatData
-  );
+  const handleNumberBChange = (event, state, setState) => {
+    const newNumberB = Math.max(1, parseInt(event.target.value, 10));
+    if (state.numberA + newNumberB > sumOfStats) {
+      setState({ ...state, numberB: sumOfStats - state.numberA });
+    } else {
+      setState({ ...state, numberB: newNumberB });
+    }
+  };
 
-  const isDisabled = stats[stat1] + stats[stat2] !== sumOfStats;
+  const isDisabled = values.numberA + values.numberB !== sumOfStats;
 
   return (
     <div className="number-widget">
@@ -43,8 +44,8 @@ const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
             className="number-input"
             min="1"
             name={stat1}
-            value={stats[stat1]}
-            onChange={handleStatsChange}
+            value={values.numberA}
+            onChange={(e) => onChange(e, handleNumberAChange)}
           />
           <label htmlFor={stat1} className="number-label">{stat1}</label>
         </div>
@@ -55,13 +56,13 @@ const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
             className="number-input"
             min="1"
             name={stat2}
-            value={stats[stat2]}
-            onChange={handleStatsChange}
+            value={values.numberB}
+            onChange={(e) => onChange(e, handleNumberBChange)}
           />
           <label htmlFor={stat2} className="number-label">{stat2}</label>
         </div>
       </div>
-      <button className={`submit-button ${isDisabled ? 'disabled-button' : ''}`} onClick={handleSubmit} disabled={isDisabled}>
+      <button className={`submit-button ${isDisabled ? 'disabled-button' : ''}`} onClick={onSubmit} disabled={isDisabled}>
         Submit
       </button>
     </div>
