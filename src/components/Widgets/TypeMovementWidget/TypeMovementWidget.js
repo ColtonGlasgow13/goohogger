@@ -1,38 +1,30 @@
 // TypeMovementWidget.js
-import React, { useState } from 'react';
+import React from 'react';
 import './TypeMovementWidget.css';
 import '../../common/SubmitButton.css';
-import { putMonsterData } from '../../API/API';
+import useForm from '../useForm';
 
 const TypeMovementWidget = () => {
-  const [monsterType, setMonsterType] = useState('');
-  const [movementSpeed, setMovementSpeed] = useState(5);
-
-  const handleTypeChange = (event) => {
-    setMonsterType(event.target.value);
+  const handleTypeChange = (event, state, setState) => {
+    setState(event.target.value);
   };
 
-  const handleSpeedChange = (event) => {
-    setMovementSpeed(event.target.value);
+  const handleSpeedChange = (event, state, setState) => {
+    setState(event.target.value);
   };
 
-  const handleSubmit = () => {
-    const data = {
-        type: monsterType,
-        speed: movementSpeed
-      };
-  
-    const idToken = JSON.parse(sessionStorage.getItem('idToken'));
-    putMonsterData(data, idToken);
-  };
+  const formatData = (state) => (state);
+
+  const { values, onChange, onSubmit } = useForm({type: '', speed: 5}, formatData);
 
   return (
     <div className="type-movement-widget">
       <h3>Select the type of the monster and set its movement speed:</h3>
       <select
         className="monster-type-select"
-        value={monsterType}
-        onChange={handleTypeChange}
+        name="type"
+        value={values.type}
+        onChange={(e) => onChange(e, handleTypeChange)}
       >
         <option value="">Select...</option>
         <option value="type1">Type 1</option>
@@ -45,10 +37,11 @@ const TypeMovementWidget = () => {
         type="number"
         min="5"
         step="5"
-        value={movementSpeed}
-        onChange={handleSpeedChange}
+        name="speed"
+        value={values.speed}
+        onChange={(e) => onChange(e, handleSpeedChange)}
       />
-      <button className="submit-button" onClick={handleSubmit}>Submit</button>
+      <button className="submit-button" onClick={onSubmit}>Submit</button>
     </div>
   );
 };
