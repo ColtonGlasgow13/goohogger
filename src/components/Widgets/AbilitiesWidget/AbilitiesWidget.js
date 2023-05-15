@@ -1,7 +1,7 @@
 // AbilitiesWidget.js
 import React, { useState } from 'react';
 import './AbilitiesWidget.css';
-import { putMonsterData } from '../API/API';
+import { putMonsterData } from '../../API/API';
 
 const AbilitiesWidget = () => {
   const [selectedAbilities, setSelectedAbilities] = useState({});

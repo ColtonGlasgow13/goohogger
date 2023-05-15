@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './InterfacePanel.css';
-import TextInputWidget from '../TextInputWidget/TextInputWidget';
-import NumberWidget from '../NumberWidget/NumberWidget';
-import TypeMovementWidget from '../TypeMovementWidget/TypeMovementWidget'
+import TextInputWidget from '../Widgets/TextInputWidget/TextInputWidget';
+import NumberWidget from '../Widgets/NumberWidget/NumberWidget';
+import TypeMovementWidget from '../Widgets/TypeMovementWidget/TypeMovementWidget'
 import '../common/SubmitButton.css';
 import '../common/SpinningImage.css';
 import './InterfacePanelForm.css'
 import AuthForm from '../AuthForm/AuthForm';
-import AbilitiesWidget from '../AbilitiesWidget/AbilitiesWidget';
+import AbilitiesWidget from '../Widgets/AbilitiesWidget/AbilitiesWidget';
 
 const InterfacePanel = ({ user, setUser, widgetName, stat1, stat2 }) => {
     const [showLogin, setShowLogin] = useState(true);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './NumberWidget.css';
 import '../common/SubmitButton.css';
-import { putMonsterData } from '../API/API'
+import { putMonsterData } from '../../API/API'
 
 const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
   const [numberA, setNumberA] = useState(1);
