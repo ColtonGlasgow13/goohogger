@@ -1,6 +1,7 @@
 // TextInputWidget.js
 import React, { useState } from 'react';
 import './TextInputWidget.css';
+import '../../common/SubmitButton.css';
 import { putMonsterData } from '../../API/API'
 
 const TextInputWidget = () => {

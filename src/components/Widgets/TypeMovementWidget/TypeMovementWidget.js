@@ -1,7 +1,7 @@
 // TypeMovementWidget.js
 import React, { useState } from 'react';
 import './TypeMovementWidget.css';
-import '../common/SubmitButton.css';
+import '../../common/SubmitButton.css';
 import { putMonsterData } from '../../API/API';
 
 const TypeMovementWidget = () => {

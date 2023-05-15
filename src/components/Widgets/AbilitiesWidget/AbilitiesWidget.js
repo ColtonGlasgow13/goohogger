@@ -1,6 +1,7 @@
 // AbilitiesWidget.js
 import React, { useState } from 'react';
 import './AbilitiesWidget.css';
+import '../../common/SubmitButton.css';
 import { putMonsterData } from '../../API/API';
 
 const AbilitiesWidget = () => {
