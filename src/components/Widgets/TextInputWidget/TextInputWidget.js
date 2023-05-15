@@ -1,24 +1,13 @@
 // TextInputWidget.js
-import React, { useState } from 'react';
+import React from 'react';
 import './TextInputWidget.css';
 import '../../common/SubmitButton.css';
-import { putMonsterData } from '../../API/API'
+import useForm from '../useForm';
 
 const TextInputWidget = () => {
-  const initialText = '';
+  const formatData = value => (value);
 
-  const handleInputChange = (event, _, setValue) => {
-    setValue(event.target.value);
-  };
-
-  const formatData = (text) => ({ name: text });
-
-  const { value: text, onChange: handleNameChange, onSubmit: handleSubmit } = useFormInput(
-    initialText,
-    handleInputChange,
-    formatData
-  );
-
+  const { values, onChange, onSubmit } = useForm({ name: '' }, formatData);
 
   return (
     <div className="text-input-widget">
@@ -27,10 +16,11 @@ const TextInputWidget = () => {
         className="text-input"
         type="text"
         placeholder="Enter text here"
-        value={text}
-        onChange={handleNameChange}
+        value={values.name}
+        name='name'
+        onChange={event => onChange(event)}
       />
-      <button className="submit-button" onClick={handleSubmit}>Submit</button>
+      <button className="submit-button" onClick={onSubmit}>Submit</button>
     </div>
   );
 };

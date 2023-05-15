@@ -1,7 +1,7 @@
 import React from 'react';
 import './NumberWidget.css';
 import '../../common/SubmitButton.css';
-import useFormInput from '../useFormInput';
+import useFormInput from '../useForm';
 
 const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
   const initialStats = {
