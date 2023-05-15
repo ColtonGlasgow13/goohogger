@@ -1,7 +1,7 @@
 // TextInputWidget.js
 import React from 'react';
 import './TextInputWidget.css';
-import '../../common/SubmitButton.css';
+import '../../Common/SubmitButton.css';
 import useForm from '../useForm';
 
 const TextInputWidget = () => {

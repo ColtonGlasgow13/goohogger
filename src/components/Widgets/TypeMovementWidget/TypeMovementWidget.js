@@ -1,7 +1,7 @@
 // TypeMovementWidget.js
 import React from 'react';
 import './TypeMovementWidget.css';
-import '../../common/SubmitButton.css';
+import '../../Common/SubmitButton.css';
 import useForm from '../useForm';
 
 const TypeMovementWidget = () => {

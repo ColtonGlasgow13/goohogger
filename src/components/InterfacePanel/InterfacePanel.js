@@ -3,8 +3,8 @@ import './InterfacePanel.css';
 import TextInputWidget from '../Widgets/TextInputWidget/TextInputWidget';
 import NumberWidget from '../Widgets/NumberWidget/NumberWidget';
 import TypeMovementWidget from '../Widgets/TypeMovementWidget/TypeMovementWidget'
-import '../common/SubmitButton.css';
-import '../common/SpinningImage.css';
+import '../Common/SubmitButton.css';
+import '../Common/SpinningImage.css';
 import './InterfacePanelForm.css'
 import AuthForm from '../AuthForm/AuthForm';
 import AbilitiesWidget from '../Widgets/AbilitiesWidget/AbilitiesWidget';
