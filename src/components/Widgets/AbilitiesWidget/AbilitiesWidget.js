@@ -1,27 +1,22 @@
 // AbilitiesWidget.js
-import React, { useState } from 'react';
+import React from 'react';
 import './AbilitiesWidget.css';
 import '../../common/SubmitButton.css';
-import { putMonsterData } from '../../API/API';
+import useForm from '../useForm';
 
 const AbilitiesWidget = () => {
-  const [selectedAbilities, setSelectedAbilities] = useState({});
+  const formatData = (selectedAbilities) => ({
+      abilities: Object.keys(selectedAbilities).filter(ability => selectedAbilities[ability] === true)
+    });
 
-  const handleAbilityChange = (event) => {
-    setSelectedAbilities({
-      ...selectedAbilities,
+  const handleAbilityChange = (event, state, setState) => {
+    setState({
+      ...state,
       [event.target.name]: event.target.checked,
     });
   };
 
-  const handleSubmit = () => {
-    const data = {
-        abilities: Object.keys(selectedAbilities).filter(ability => selectedAbilities[ability] === true)
-      };
-  
-    const idToken = JSON.parse(sessionStorage.getItem('idToken'));
-    putMonsterData(data, idToken);
-  };
+  const { values, onChange, onSubmit } = useForm({ }, formatData);
 
   return (
     <div className="abilities-widget">
@@ -30,8 +25,8 @@ const AbilitiesWidget = () => {
         <input
           type="checkbox"
           name="ability1"
-          checked={selectedAbilities.ability1 || false}
-          onChange={handleAbilityChange}
+          checked={values.ability1 || false}
+          onChange={(e) => onChange(e, handleAbilityChange)}
         />
         Ability 1
       </label>
@@ -39,8 +34,8 @@ const AbilitiesWidget = () => {
         <input
           type="checkbox"
           name="ability2"
-          checked={selectedAbilities.ability2 || false}
-          onChange={handleAbilityChange}
+          checked={values.ability2 || false}
+          onChange={(e) => onChange(e, handleAbilityChange)}
         />
         Ability 2
       </label>
@@ -48,12 +43,12 @@ const AbilitiesWidget = () => {
         <input
           type="checkbox"
           name="ability3"
-          checked={selectedAbilities.ability3 || false}
-          onChange={handleAbilityChange}
+          checked={values.ability3 || false}
+          onChange={(e) => onChange(e, handleAbilityChange)}
         />
         Ability 3
       </label>
-      <button className="submit-button" onClick={handleSubmit}>Submit</button>
+      <button className="submit-button" onClick={onSubmit}>Submit</button>
     </div>
   );
 };
