@@ -6,14 +6,14 @@ import useForm from '../useForm';
 
 const TypeMovementWidget = () => {
   const handleTypeChange = (event, state, setState) => {
-    setState(event.target.value);
+    setState(prevState => ({ ...prevState, type: event.target.value }));
   };
 
   const handleSpeedChange = (event, state, setState) => {
-    setState(event.target.value);
+    setState(prevState => ({ ...prevState, speed: parseInt(event.target.value, 10) }));
   };
 
-  const formatData = (state) => (state);
+  const formatData = state => (state);
 
   const { values, onChange, onSubmit } = useForm({type: '', speed: 5}, formatData);
 

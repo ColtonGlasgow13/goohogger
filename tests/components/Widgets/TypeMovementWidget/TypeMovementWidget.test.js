@@ -37,12 +37,10 @@ describe('TypeMovementWidget', () => {
 
     // Change the values of the select and input
     userEvent.selectOptions(typeSelect, ['type1']);
-    fireEvent.change(speedInput, { target: { value: '10' } });
+    fireEvent.change(speedInput, { target: { value: 10 } });
 
-    // Submit the form
-    await act(async () => {
-      userEvent.click(submitButton);
-    });
+    // Click the submit button
+    await userEvent.click(submitButton);
 
     // Check if putMonsterData was called with the correct data
     expect(putMonsterData).toHaveBeenCalledWith(
