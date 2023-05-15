@@ -1,8 +1,10 @@
-// MonsterTypeWidget.js
+// TypeMovementWidget.js
 import React, { useState } from 'react';
-import './MonsterTypeWidget.css';
+import './TypeMovementWidget.css';
+import '../common/SubmitButton.css';
+import { putMonsterData } from '../API/API';
 
-const MonsterTypeWidget = () => {
+const TypeMovementWidget = () => {
   const [monsterType, setMonsterType] = useState('');
   const [movementSpeed, setMovementSpeed] = useState(5);
 
@@ -25,7 +27,7 @@ const MonsterTypeWidget = () => {
   };
 
   return (
-    <div className="monster-type-widget">
+    <div className="type-movement-widget">
       <h3>Select the type of the monster and set its movement speed:</h3>
       <select
         className="monster-type-select"
@@ -51,4 +53,4 @@ const MonsterTypeWidget = () => {
   );
 };
 
-export default MonsterTypeWidget;
+export default TypeMovementWidget;

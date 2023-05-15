@@ -1,0 +1,16 @@
+.abilities-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .abilities-widget label {
+    display: block;
+    margin: 10px 0;
+    font-size: 1.2em;
+  }
+  
+  .abilities-widget input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  

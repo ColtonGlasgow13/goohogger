@@ -7,6 +7,7 @@ import '../common/SubmitButton.css';
 import '../common/SpinningImage.css';
 import './InterfacePanelForm.css'
 import AuthForm from '../AuthForm/AuthForm';
+import AbilitiesWidget from '../AbilitiesWidget/AbilitiesWidget';
 
 const InterfacePanel = ({ user, setUser, widgetName, stat1, stat2 }) => {
     const [showLogin, setShowLogin] = useState(true);
@@ -32,6 +33,8 @@ const InterfacePanel = ({ user, setUser, widgetName, stat1, stat2 }) => {
             return <NumberWidget stat1={stat1} stat2={stat2} sumOfStats={30}/>
           case 'type-movement':
             return <TypeMovementWidget/>;
+          case 'abilities':
+            return <AbilitiesWidget/>
           default:
             return <img src="goohogger-head-on.png" alt="Loading..." className="spinning-image" />
         }
