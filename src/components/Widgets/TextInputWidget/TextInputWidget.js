@@ -5,20 +5,19 @@ import '../../common/SubmitButton.css';
 import { putMonsterData } from '../../API/API'
 
 const TextInputWidget = () => {
-  const [text, setText] = useState('')
+  const initialText = '';
 
-  const handleInputChange = (event) => {
-    setText(event.target.value);
+  const handleInputChange = (event, _, setValue) => {
+    setValue(event.target.value);
   };
 
-  const handleSubmit = () => {
-    const data = {
-      name: text
-    };
+  const formatData = (text) => ({ name: text });
 
-    const idToken = JSON.parse(sessionStorage.getItem('idToken'));
-    putMonsterData(data, idToken);
-  };
+  const { value: text, onChange: handleNameChange, onSubmit: handleSubmit } = useFormInput(
+    initialText,
+    handleInputChange,
+    formatData
+  );
 
 
   return (
@@ -29,7 +28,7 @@ const TextInputWidget = () => {
         type="text"
         placeholder="Enter text here"
         value={text}
-        onChange={handleInputChange}
+        onChange={handleNameChange}
       />
       <button className="submit-button" onClick={handleSubmit}>Submit</button>
     </div>
