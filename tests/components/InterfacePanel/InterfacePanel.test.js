@@ -1,6 +1,6 @@
 const React = require('react');
 const { render, screen, cleanup } = require('@testing-library/react');
-const { default: InterfacePanel } = require('../src/components/InterfacePanel/InterfacePanel.js');
+const { default: InterfacePanel } = require('../../../src/components/InterfacePanel/InterfacePanel.js');
 import userEvent from '@testing-library/user-event';
 
 // Clean up after each test

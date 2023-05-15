@@ -1,6 +1,6 @@
 const React = require('react');
 const { render, screen, cleanup } = require('@testing-library/react');
-const { default: AuthForm } = require('../src/components/AuthForm/AuthForm.js');
+const { default: AuthForm } = require('../../../src/components/AuthForm/AuthForm.js');
 import userEvent from '@testing-library/user-event';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
