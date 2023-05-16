@@ -32,7 +32,7 @@ const NumberWidget = ({ stat1, stat2, sumOfStats }) => {
   const isDisabled = values.numberA + values.numberB !== sumOfStats;
 
   return (
-    <div className="number-widget">
+    <div className="number-widget" data-test-id="stats-widget">
       <p>
         Set the <strong>{stat1}</strong> and <strong>{stat2}</strong> of the monster! Their sum must equal {sumOfStats}.
       </p>

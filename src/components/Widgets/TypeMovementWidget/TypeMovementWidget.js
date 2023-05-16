@@ -18,7 +18,7 @@ const TypeMovementWidget = () => {
   const { values, onChange, onSubmit } = useForm({type: '', speed: 5}, formatData);
 
   return (
-    <div className="type-movement-widget">
+    <div className="type-movement-widget" data-test-id="type-movement-widget">
       <h3>Select the type of the monster and set its movement speed:</h3>
       <select
         className="monster-type-select"

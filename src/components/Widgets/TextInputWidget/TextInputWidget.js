@@ -10,7 +10,7 @@ const TextInputWidget = () => {
   const { values, onChange, onSubmit } = useForm({ name: '' }, formatData);
 
   return (
-    <div className="text-input-widget">
+    <div className="text-input-widget" data-test-id="name-widget">
       <h3>What is the name of the monster?</h3>
       <input
         className="text-input"

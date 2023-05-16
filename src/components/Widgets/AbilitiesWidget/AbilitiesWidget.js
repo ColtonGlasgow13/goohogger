@@ -19,7 +19,7 @@ const AbilitiesWidget = () => {
   const { values, onChange, onSubmit } = useForm({ }, formatData);
 
   return (
-    <div className="abilities-widget">
+    <div className="abilities-widget" data-test-id="abilities-widget">
       <h3>Select the abilities of the monster:</h3>
       <label>
         <input
