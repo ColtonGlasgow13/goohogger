@@ -79,11 +79,11 @@ const AbilitiesWidget = () => {
         <label>
           <input
             type="checkbox"
-            name="reachAttacks"
-            checked={values.reachAttacks || false}
+            name="summonsAllies"
+            checked={values.summonsAllies || false}
             onChange={(e) => onChange(e, handleAbilityChange)}
           />
-          Reach Attacks
+          Summons Allies
         </label>
         <label>
           <input

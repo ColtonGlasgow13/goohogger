@@ -31,45 +31,87 @@ test('AbilitiesWidget should have the correct className', () => {
 test('Checkboxes correctly reflect state', async () => {
   render(<AbilitiesWidget />);
 
-  const ability1Checkbox = screen.getByLabelText('Ability 1');
-  const ability2Checkbox = screen.getByLabelText('Ability 2');
-  const ability3Checkbox = screen.getByLabelText('Ability 3');
+  const spellcastingCheckbox = screen.getByLabelText('Spellcasting');
+  const areaOfEffectCheckbox = screen.getByLabelText('Area of Effect');
+  const hpReductionCheckbox = screen.getByLabelText('HP Reduction');
+  const rangedAttacksCheckbox = screen.getByLabelText('Ranged Attacks');
+  const reachAttacksCheckbox = screen.getByLabelText('Reach Attacks');
+  const rechargeCheckbox = screen.getByLabelText('Recharge');
+  const summonsAlliesCheckbox = screen.getByLabelText('Summons Allies');
+  const legendaryCheckbox = screen.getByLabelText('Legendary');
+  const lairActionsCheckbox = screen.getByLabelText('Lair Actions');
+  const reactionsCheckbox = screen.getByLabelText('Reactions');
+
 
   // Check initial state
-  expect(ability1Checkbox).not.toBeChecked();
-  expect(ability2Checkbox).not.toBeChecked();
-  expect(ability3Checkbox).not.toBeChecked();
+  expect(spellcastingCheckbox).not.toBeChecked();
+  expect(areaOfEffectCheckbox).not.toBeChecked();
+  expect(hpReductionCheckbox).not.toBeChecked();
+  expect(rangedAttacksCheckbox).not.toBeChecked();
+  expect(reachAttacksCheckbox).not.toBeChecked();
+  expect(rechargeCheckbox).not.toBeChecked();
+  expect(summonsAlliesCheckbox).not.toBeChecked();
+  expect(legendaryCheckbox).not.toBeChecked();
+  expect(lairActionsCheckbox).not.toBeChecked();
+  expect(reactionsCheckbox).not.toBeChecked();
 
   // Check one checkbox
-  await userEvent.click(ability1Checkbox);
-  expect(ability1Checkbox).toBeChecked();
-  expect(ability2Checkbox).not.toBeChecked();
-  expect(ability3Checkbox).not.toBeChecked();
+  await userEvent.click(areaOfEffectCheckbox);
+  expect(spellcastingCheckbox).not.toBeChecked();
+  expect(areaOfEffectCheckbox).toBeChecked();
+  expect(hpReductionCheckbox).not.toBeChecked();
+  expect(rangedAttacksCheckbox).not.toBeChecked();
+  expect(reachAttacksCheckbox).not.toBeChecked();
+  expect(rechargeCheckbox).not.toBeChecked();
+  expect(summonsAlliesCheckbox).not.toBeChecked();
+  expect(legendaryCheckbox).not.toBeChecked();
+  expect(lairActionsCheckbox).not.toBeChecked();
+  expect(reactionsCheckbox).not.toBeChecked();
 
   // Check another checkbox
-  await userEvent.click(ability2Checkbox);
-  expect(ability1Checkbox).toBeChecked();
-  expect(ability2Checkbox).toBeChecked();
-  expect(ability3Checkbox).not.toBeChecked();
+  await userEvent.click(legendaryCheckbox);
+  expect(spellcastingCheckbox).not.toBeChecked();
+  expect(areaOfEffectCheckbox).toBeChecked();
+  expect(hpReductionCheckbox).not.toBeChecked();
+  expect(rangedAttacksCheckbox).not.toBeChecked();
+  expect(reachAttacksCheckbox).not.toBeChecked();
+  expect(rechargeCheckbox).not.toBeChecked();
+  expect(summonsAlliesCheckbox).not.toBeChecked();
+  expect(legendaryCheckbox).toBeChecked();
+  expect(lairActionsCheckbox).not.toBeChecked();
+  expect(reactionsCheckbox).not.toBeChecked();
+
+  // Uncheck a checkbox
+  await userEvent.click(legendaryCheckbox);
+  expect(spellcastingCheckbox).not.toBeChecked();
+  expect(areaOfEffectCheckbox).toBeChecked();
+  expect(hpReductionCheckbox).not.toBeChecked();
+  expect(rangedAttacksCheckbox).not.toBeChecked();
+  expect(reachAttacksCheckbox).not.toBeChecked();
+  expect(rechargeCheckbox).not.toBeChecked();
+  expect(summonsAlliesCheckbox).not.toBeChecked();
+  expect(legendaryCheckbox).not.toBeChecked();
+  expect(lairActionsCheckbox).not.toBeChecked();
+  expect(reactionsCheckbox).not.toBeChecked();
 });
 
 test('Submit button calls putMonsterData function with correct data', async () => {
   render(<AbilitiesWidget />);
 
-  const ability1Checkbox = screen.getByLabelText('Ability 1');
-  const ability2Checkbox = screen.getByLabelText('Ability 2');
+  const areaOfEffectCheckbox = screen.getByLabelText('Area of Effect');
+  const legendaryCheckbox = screen.getByLabelText('Legendary');
   const submitButton = screen.getByRole('button', { name: 'Submit' });
 
   // Check a checkbox
-  await userEvent.click(ability1Checkbox);
-  await userEvent.click(ability2Checkbox);
+  await userEvent.click(areaOfEffectCheckbox);
+  await userEvent.click(legendaryCheckbox);
 
   // Click the submit button
   await userEvent.click(submitButton);
 
   // Check if putMonsterData was called with the correct data
   expect(putMonsterData).toHaveBeenCalledWith(
-    { abilities: ['ability1', 'ability2'] },
+    { abilities: ['areaOfEffect', 'legendary'] },
     expect.anything()
   );
 });

@@ -36,7 +36,7 @@ describe('TypeMovementWidget', () => {
     const submitButton = screen.getByRole('button', { name: 'Submit' });
 
     // Change the values of the select and input
-    userEvent.selectOptions(typeSelect, ['type1']);
+    userEvent.selectOptions(typeSelect, ['fiend']);
     fireEvent.change(speedInput, { target: { value: 10 } });
 
     // Click the submit button
@@ -44,7 +44,7 @@ describe('TypeMovementWidget', () => {
 
     // Check if putMonsterData was called with the correct data
     expect(putMonsterData).toHaveBeenCalledWith(
-      { type: 'type1', speed: 10 },
+      { type: 'fiend', speed: 10 },
       expect.anything()
     );
   });
