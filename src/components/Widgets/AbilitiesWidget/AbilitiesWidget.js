@@ -53,7 +53,7 @@ const AbilitiesWidget = () => {
           <input
             type="checkbox"
             name="rangedAttacks"
-            checked={values.rangedWeapons || false}
+            checked={values.rangedAttacks || false}
             onChange={(e) => onChange(e, handleAbilityChange)}
           />
           Ranged Attacks
