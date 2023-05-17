@@ -27,10 +27,21 @@ const TypeMovementWidget = () => {
         onChange={(e) => onChange(e, handleTypeChange)}
       >
         <option value="">Select...</option>
-        <option value="type1">Type 1</option>
-        <option value="type2">Type 2</option>
-        <option value="type3">Type 3</option>
-        // Add more options as needed
+        <option value="aberration">Aberration</option>
+        <option value="beast">Beast</option>
+        <option value="celestial">Celestial</option>
+        <option value="construct">Construct</option>
+        <option value="dragon">Dragon</option>
+        <option value="elemental">Elemental</option>
+        <option value="fey">Fey</option>
+        <option value="fiend">Field</option>
+        <option value="giant">Giant</option>
+        <option value="humanoid">Humanoid</option>
+        <option value="monstrosity">Monstrosity</option>
+        <option value="ooze">Ooze</option>
+        <option value="plant">Plant</option>
+        <option value="undead">Undead</option>
+
       </select>
       <input
         className="movement-speed-input"

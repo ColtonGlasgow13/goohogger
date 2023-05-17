@@ -4,6 +4,7 @@ import './TextInputWidget.css';
 import '../../Common/SubmitButton.css';
 import useForm from '../useForm';
 
+
 const TextInputWidget = () => {
   const formatData = value => (value);
 
@@ -24,5 +25,6 @@ const TextInputWidget = () => {
     </div>
   );
 };
+
 
 export default TextInputWidget;
