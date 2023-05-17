@@ -1,15 +1,36 @@
 .type-movement-widget {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .monster-type-select, .movement-speed-input {
-    width: 200px;
-    height: 40px;
-    font-size: 1.2em;
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.monster-type-select {
+  width: 200px;
+  height: 40px;
+  font-size: 1.2em;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.movement-speed-input {
+  width: 3em;
+  height: 40px;
+  font-size: 1.2em;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+.speed-container {
+  display: flex;
+  align-items: center;
+}
+
+.unit {
+  margin-left: 5px;
+  font-size: 1.2em;
+}

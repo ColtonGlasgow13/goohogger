@@ -34,7 +34,7 @@ const TypeMovementWidget = () => {
         <option value="dragon">Dragon</option>
         <option value="elemental">Elemental</option>
         <option value="fey">Fey</option>
-        <option value="fiend">Field</option>
+        <option value="fiend">Fiend</option>
         <option value="giant">Giant</option>
         <option value="humanoid">Humanoid</option>
         <option value="monstrosity">Monstrosity</option>
@@ -43,15 +43,18 @@ const TypeMovementWidget = () => {
         <option value="undead">Undead</option>
 
       </select>
-      <input
-        className="movement-speed-input"
-        type="number"
-        min="5"
-        step="5"
-        name="speed"
-        value={values.speed}
-        onChange={(e) => onChange(e, handleSpeedChange)}
-      />
+      <div className='speed-container'>
+        <input
+          className="movement-speed-input"
+          type="number"
+          min="5"
+          step="5"
+          name="speed"
+          value={values.speed}
+          onChange={(e) => onChange(e, handleSpeedChange)}
+        />
+        <span className="unit">ft</span>
+      </div>
       <button className="submit-button" onClick={onSubmit}>Submit</button>
     </div>
   );
