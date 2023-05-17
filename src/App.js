@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
-import './components/common/wordart.css'
+import './components/Common/wordart.css'
 import GoohoggerMain from './components/GoohoggerMain/GoohoggerMain';
 import InterfacePanel from './components/InterfacePanel/InterfacePanel';
-import Music from './components/common/Music.js';
-import { auth } from './components/common/firebase';
+import Music from './components/Common/Music.js';
+import { auth } from './components/Common/firebase';
 import { assignUserToMonster, getUserAssignedWidget, isUserAssignedToMonster } from './components/API/API.js';
 
 function App() {

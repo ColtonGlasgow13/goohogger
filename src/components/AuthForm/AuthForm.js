@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../common/firebase';
-import '../common/SubmitButton.css'
+import { auth } from '../Common/firebase';
+import '../Common/SubmitButton.css'
 import './AuthForm.css'
 
 const AuthForm = ({ title, mode, onSignIn }) => {

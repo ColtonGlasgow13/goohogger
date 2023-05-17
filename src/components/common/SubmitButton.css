@@ -7,4 +7,14 @@
   cursor: pointer;
   background-color: #4CAF50;
   color: white;
+  transition: background-color 0.1s ease;
+}
+
+.submit-button:not(.disabled-button):active {
+  background-color: #388E3C;  /* Darker shade for active state */
+}
+
+.disabled-button {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

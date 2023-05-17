@@ -1,6 +1,6 @@
 const React = require('react');
 const { render, screen } = require('@testing-library/react');
-const { default: App } = require('../src/App.js');
+const { default: App } = require('../../src/App.js');
 
 test('renders two main images', () => {
   render(<App />);
